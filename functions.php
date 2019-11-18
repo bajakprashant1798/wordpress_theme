@@ -1,5 +1,52 @@
 <?php
 /*
+    ===============================
+    Custom Post Type
+    ===============================
+*/    
+function wpportfolio1_register_post_type(){
+
+    $labels = array(
+		'name'               => 'portfolio',
+		'singular_name'      => 'portfolio',
+		'menu_name'          => 'portfolio',
+		'add_new'            => 'Add portfolio word',
+		'add_new_item'       => 'Add Item',
+		'new_item'           => 'New Item',
+		'edit_item'          => 'Edit Item',
+		'view_item'          => 'View Item',
+		'all_items'          => 'All Item',
+		'search_items'       => 'Search portfolio',
+		'parent_item_colon'  => '',
+		'not_found'          => 'No portfolio found',
+		'not_found_in_trash' => 'No portfolio found in Trash'
+	);
+
+	$args = array(
+		'labels'             => $labels,
+		'description'        => 'This is portfolio post type',
+		'public'             => true,
+		'publicly_queryable' => true,
+		'show_ui'            => true,
+		'show_in_menu'       => true,
+		'query_var'          => true,
+		'rewrite'            => array( 'slug' => 'book' ),
+		'capability_type'    => 'post',
+		'has_archive'        => true,
+		'hierarchical'       => false,
+		'menu_position'      => null,
+		'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' )
+	);
+
+    register_post_type( 'portfolio', $args );
+}
+add_action( 'init', 'wpportfolio1_register_post_type' );
+
+
+
+
+
+/*
 ======================================================
 Include scripts
 ======================================================
